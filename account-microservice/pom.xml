@@ -12,10 +12,10 @@
     <packaging>jar</packaging>
 
     <groupId>com.aline</groupId>
-    <artifactId>microservice-template</artifactId>
+    <artifactId>aline-account-microservice</artifactId>
     <version>0.1.0</version>
-    <name>microservice-template</name>
-    <description>Microservice template project for Aline Financial</description>
+    <name>Account Microservice</name>
+    <description>Handle bank account state such as account balance, status, and other information.</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

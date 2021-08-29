@@ -1,4 +1,4 @@
-package com.aline.microservicetemplate;
+package com.aline.accountmicroservice;
 
 import com.aline.core.annotation.EnableCoreModule;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -15,10 +15,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
             version = "1.0"
     )
 )
-public class MicroserviceTemplateApplication {
+public class AccountMicroserviceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MicroserviceTemplateApplication.class, args);
+        SpringApplication.run(AccountMicroserviceApplication.class, args);
     }
 
 }
