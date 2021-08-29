@@ -7,7 +7,7 @@
     <groupId>com.aline</groupId>
     <artifactId>aline-account-microservice</artifactId>
     <version>0.1.0</version>
-    <name>Account Microservice Root</name>
+    <name>Account Microservice Project</name>
 
     <packaging>pom</packaging>
 

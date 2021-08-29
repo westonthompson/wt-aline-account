@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
 
     <groupId>com.aline</groupId>
-    <artifactId>aline-account-microservice</artifactId>
+    <artifactId>account-microservice</artifactId>
     <version>0.1.0</version>
     <name>Account Microservice</name>
     <description>Handle bank account state such as account balance, status, and other information.</description>
