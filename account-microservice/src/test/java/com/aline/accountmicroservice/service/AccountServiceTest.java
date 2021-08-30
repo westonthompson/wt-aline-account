@@ -1,6 +1,7 @@
 package com.aline.accountmicroservice.service;
 
 import com.aline.core.annotation.test.SpringBootUnitTest;
+import com.aline.core.annotation.test.SpringTestProperties;
 import com.aline.core.model.account.Account;
 import com.aline.core.model.account.AccountStatus;
 import com.aline.core.model.account.AccountType;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 
 import java.util.Optional;
 
@@ -18,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
-@SpringBootUnitTest
+@SpringBootUnitTest(SpringTestProperties.DISABLE_WEB_SECURITY)
 public class AccountServiceTest {
 
     @Autowired
@@ -41,6 +43,7 @@ public class AccountServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "")
     void test_getAccountById_returns_the_correctAccount() {
 
         Account account = accountService.getAccountById(1L);
