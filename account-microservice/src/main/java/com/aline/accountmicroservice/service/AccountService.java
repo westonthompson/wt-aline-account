@@ -8,6 +8,7 @@ import com.aline.core.security.annotation.PermitAll;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,13 @@ public class AccountService {
         return repository.findById(id).orElseThrow(AccountNotFoundException::new);
     }
 
+    /**
+     * Retrieve a list of accounts under the provided
+     * membership ID of a member.
+     * @param membershipId The member's membership ID.
+     * @return A list of accounts
+     */
+    @PreAuthorize("@accountAuth.canAccess(#membershipId)")
     public List<Account> getAccountsByMember(String membershipId) {
         return repository.findAccountsByMembershipNumber(membershipId);
     }

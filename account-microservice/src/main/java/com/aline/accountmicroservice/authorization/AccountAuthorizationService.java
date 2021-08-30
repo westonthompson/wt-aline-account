@@ -21,4 +21,23 @@ public class AccountAuthorizationService extends AbstractAuthorizationService<Ac
 
         return roleIsManagement();
     }
+
+    /**
+     * @param membershipId of the accounts trying to be accessed
+     * @return A boolean whether the resource can be accessed
+     */
+    public boolean canAccess(String membershipId) {
+
+        if (getRole() == UserRole.MEMBER) {
+
+            MemberUser user = (MemberUser) getUser();
+
+            Member member = user.getMember();
+
+            return membershipId.equals(member.getMembershipId());
+
+        }
+
+        return roleIsManagement();
+    }
 }
