@@ -5,6 +5,7 @@ import com.aline.core.dto.response.AccountResponse;
 import com.aline.core.model.account.Account;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class AccountController {
 
     private final AccountService service;
 
-    @GetMapping(value = "/{id}", produces = "application/json")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public AccountResponse getAccountById(@PathVariable long id) {
         Account account = service.getAccountById(id);
