@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AccountService {
@@ -26,6 +28,10 @@ public class AccountService {
     @PostAuthorize("@accountAuth.canAccess(returnObject)")
     public Account getAccountById(long id) {
         return repository.findById(id).orElseThrow(AccountNotFoundException::new);
+    }
+
+    public List<Account> getAccountsByMember(String membershipId) {
+        return repository.findAccountsByMembershipNumber(membershipId);
     }
 
     /**

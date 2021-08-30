@@ -49,4 +49,15 @@ public class AccountControllerTest {
 
     }
 
+    @Test
+    void test_getAccountsByMember_statusIsOk_when_accounts_exist() throws Exception {
+
+        mockMvc.perform(get("/members/membership-id/12345678/accounts"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(2))
+                .andDo(print());
+
+    }
+
 }
