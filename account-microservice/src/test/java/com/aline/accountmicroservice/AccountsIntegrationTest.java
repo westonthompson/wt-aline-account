@@ -1,7 +1,8 @@
-package com.aline.accountmicroservice.controller;
+package com.aline.accountmicroservice;
 
 import com.aline.core.annotation.test.SpringBootIntegrationTest;
 import com.aline.core.annotation.test.SpringTestProperties;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,9 +18,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootIntegrationTest(SpringTestProperties.DISABLE_WEB_SECURITY)
+@DisplayName("Account Microservice Integration Test")
 @Sql(scripts = {"classpath:scripts/accounts.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Transactional
-public class AccountControllerTest {
+public class AccountsIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -50,10 +52,11 @@ public class AccountControllerTest {
     @Test
     void test_getAccountsByMember_statusIsOk_when_accounts_exist() throws Exception {
 
-        mockMvc.perform(get("/members/membership-id/12345678/accounts"))
+        mockMvc.perform(get("/members/1/accounts"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$.length()").value(2))
+                .andExpect(jsonPath("$.content").isArray())
+                .andExpect(jsonPath("$.content").isNotEmpty())
+                .andExpect(jsonPath("$.content.length()").value(2))
                 .andDo(print());
 
     }

@@ -12,10 +12,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -51,8 +53,9 @@ public class AccountServiceTest {
         when(repository.findById(1L))
                 .thenReturn(Optional.of(checkingAccount));
 
-        when(repository.findAccountsByMembershipNumber("12345678"))
-                .thenReturn(Arrays.asList(checkingAccount, savingsAccount));
+        Pageable pageable = PageRequest.of(0, 10);
+        when(repository.findAllByMemberId(1L, pageable))
+                .thenReturn(new PageImpl<>(Arrays.asList(checkingAccount, savingsAccount), pageable, 2));
     }
 
     @Test
@@ -69,13 +72,13 @@ public class AccountServiceTest {
     }
 
     @Test
-    void test_getAccountById_returns_a_list_of_allAccounts() {
+    void test_getAccountById_returns_a_page_of_allAccounts() {
 
-        List<Account> accounts = accountService.getAccountsByMember("12345678");
+        Page<Account> accounts = accountService.getAccountsByMemberId(1L, PageRequest.of(0, 10));
         assertFalse(accounts.isEmpty());
-        assertEquals(2, accounts.size());
-        assertEquals(1L, accounts.get(0).getId());
-        assertEquals(2L, accounts.get(1).getId());
+        assertEquals(2, accounts.getTotalElements());
+        assertEquals(1L, accounts.getContent().get(0).getId());
+        assertEquals(2L, accounts.getContent().get(1).getId());
     }
 
 }

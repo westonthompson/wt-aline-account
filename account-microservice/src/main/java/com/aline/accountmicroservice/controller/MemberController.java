@@ -3,6 +3,7 @@ package com.aline.accountmicroservice.controller;
 import com.aline.accountmicroservice.service.AccountService;
 import com.aline.core.dto.response.AccountResponse;
 import com.aline.core.model.account.Account;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,24 +16,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/members/{memberId}/accounts")
 @RequiredArgsConstructor
-public class AccountController {
+public class MemberController {
 
     private final AccountService service;
 
-    @GetMapping(value = "accounts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public AccountResponse getAccountById(@PathVariable long id) {
-        Account account = service.getAccountById(id);
-        return service.mapToResponse(account);
-    }
-
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Page<AccountResponse> getAllAccounts(Pageable pageable) {
-        Page<Account> accounts = service.getAllAccounts(pageable);
-        return service.mapToPaginatedResponse(accounts);
+    public Page<AccountResponse> getAllAccountsByMemberId(@NonNull Pageable pageable, @PathVariable long memberId) {
+        Page<Account> accountPage = service.getAccountsByMemberId(memberId, pageable);
+        return service.mapToPaginatedResponse(accountPage);
     }
 
 }
