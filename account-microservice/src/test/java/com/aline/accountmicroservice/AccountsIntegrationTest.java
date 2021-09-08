@@ -44,7 +44,7 @@ public class AccountsIntegrationTest {
     @Test
     void test_getAccountById_statusIsNotFound_when_account_doesNotExist() throws Exception {
 
-        mockMvc.perform(get("/accounts/2"))
+        mockMvc.perform(get("/accounts/999"))
                 .andExpect(status().isNotFound());
 
     }
