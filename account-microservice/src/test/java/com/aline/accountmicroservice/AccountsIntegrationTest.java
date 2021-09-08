@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootIntegrationTest(SpringTestProperties.DISABLE_WEB_SECURITY)
 @DisplayName("Account Microservice Integration Test")
-@Sql(scripts = {"classpath:scripts/accounts.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = {"classpath:scripts/accounts.sql"})
 @Transactional
 public class AccountsIntegrationTest {
 

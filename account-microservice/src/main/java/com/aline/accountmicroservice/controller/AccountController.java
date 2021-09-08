@@ -21,7 +21,7 @@ public class AccountController {
 
     private final AccountService service;
 
-    @GetMapping(value = "accounts/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public AccountResponse getAccountById(@PathVariable long id) {
         Account account = service.getAccountById(id);

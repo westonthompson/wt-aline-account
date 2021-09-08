@@ -1,10 +1,10 @@
 insert into applicant (id, address, city, created_at, date_of_birth, drivers_license, email, first_name, gender, income, last_modified_at, last_name, mailing_address, mailing_city, mailing_state, mailing_zipcode, middle_name, phone, social_security, state, zipcode)
 values (1, '123 Address St', 'City', '2021-08-25', '1997-05-03', 'DC123456', 'test_boy@email.com', 'Test', 'MALE', 5500000, '2021-08-25', 'Boy', 'PO Box 123', 'City', 'New York', '12345', 'Dummy', '(888) 555-5555', '555-55-5555', 'New York', '12345');
 
-insert into applicant (address, city, created_at, date_of_birth, drivers_license, email, first_name, gender, income,
+insert into applicant (id, address, city, created_at, date_of_birth, drivers_license, email, first_name, gender, income,
                        last_modified_at, last_name, mailing_address, mailing_city, mailing_state, mailing_zipcode,
                        middle_name, phone, social_security, state, zipcode)
-values ('123 Little Blvd', 'City', '2021-08-06', '1997-06-02', 'DC654987', 'test_man@email.com',
+values (2, '123 Little Blvd', 'City', '2021-08-06', '1997-06-02', 'DC654987', 'test_man@email.com',
         'Test', 'MALE', 30000000,  '2021-08-21', 'Man', '123 Little Blvd', 'City', 'Maine', '12345',
         'The', '(555) 888-8888', '888-88-8888', 'Maine', '12345');
 
