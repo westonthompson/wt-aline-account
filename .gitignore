@@ -15,6 +15,7 @@ target/
 *.properties
 application.yml
 application.yaml
+application-dev.yml
 !*-test.properties
 
 ### IntelliJ IDEA ###

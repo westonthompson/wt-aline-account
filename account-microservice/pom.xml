@@ -12,10 +12,10 @@
     <packaging>jar</packaging>
 
     <groupId>com.aline</groupId>
-    <artifactId>microservice-template</artifactId>
+    <artifactId>account-microservice</artifactId>
     <version>0.1.0</version>
-    <name>microservice-template</name>
-    <description>Microservice template project for Aline Financial</description>
+    <name>Account Microservice</name>
+    <description>Handle bank account state such as account balance, status, and other information.</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -68,6 +68,12 @@
             <groupId>com.aline</groupId>
             <artifactId>core</artifactId>
             <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>5.4.5</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

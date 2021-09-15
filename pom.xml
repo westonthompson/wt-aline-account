@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.aline</groupId>
-    <artifactId>aline-microservice-template</artifactId>
+    <artifactId>aline-account-microservice</artifactId>
     <version>0.1.0</version>
+    <name>Account Microservice Project</name>
 
     <packaging>pom</packaging>
 
@@ -17,7 +18,7 @@
 
     <modules>
         <module>core</module>
-        <module>microservice-template</module>
+        <module>account-microservice</module>
     </modules>
     <build>
         <pluginManagement>
